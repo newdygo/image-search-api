@@ -22,11 +22,11 @@ app.route('/api/imagesearch/:param').get(function (req, res) {
         
         if (!err) {
             
-            var top = 10;
+            var offset = 10;
             var urlclean = url.parse(req.url);
             var urlquery = urlclean.query.split('&').filter(function(value) {
                 
-                return /^top=\d/g.test(value);
+                return /^offset=\d/g.test(value);
             });
             
             if (urlquery.length > 0) {
@@ -34,13 +34,13 @@ app.route('/api/imagesearch/:param').get(function (req, res) {
                 var ttop = urlquery[0].split('=')[1];
                 
                 if (/^[0-9]*$/.test(ttop)) {
-                    top = Math.abs(parseInt(ttop, 10));
+                    offset = Math.abs(parseInt(ttop, 10));
                 }
             }
             
             var search = {
                 term: urlclean.pathname.replace('/api/imagesearch/', ''),
-                top: top,
+                offset: offset,
                 when: new Date()
             };
             
@@ -50,7 +50,7 @@ app.route('/api/imagesearch/:param').get(function (req, res) {
                     
                     request({
                         url: 'https://api.datamarket.azure.com/Bing/Search/Image',
-                        qs: { Query: "'" + data.ops[0].term + "'", $format: 'json', $top: top },
+                        qs: { Query: "'" + data.ops[0].term + "'", $format: 'json', $top: offset },
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',
