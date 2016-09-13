@@ -1,0 +1,27 @@
+{
+  "name": "prj_image_search",
+  "version": "1.0.0",
+  "description": "FCC - Image SearchAPI",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newdygo/image-search-api.git"
+  },
+  "author": "newdygo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/newdygo/image-search-api/issues"
+  },
+  "homepage": "https://github.com/newdygo/image-search-api#readme",
+  "dependencies": {
+    "btoa": "^1.1.2",
+    "express": "^4.14.0",
+    "mongod": "^1.3.0",
+    "mongodb": "^2.2.9",
+    "mongoskin": "^2.1.0",
+    "request": "^2.74.0"
+  }
+}
